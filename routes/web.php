@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Middleware\AdminMiddleware;
@@ -13,8 +14,11 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::resource('bookings', BookingController::class)->only(['index', 'create', 'store']);
+
     Route::middleware(AdminMiddleware::class)->group(function () {
         Route::resource('services', ServiceController::class);
+        Route::patch('/bookings/{booking}/status', [BookingController::class, 'updateStatus'])->name('bookings.updateStatus');
     });
 });
 

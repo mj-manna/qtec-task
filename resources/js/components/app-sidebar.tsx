@@ -4,15 +4,28 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { SharedData, type NavItem } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
+import { BookOpen, Calendar, Folder, LayoutGrid } from 'lucide-react';
 import AppLogo from './app-logo';
 import { isAdmin } from '@/lib/utils';
+import { CalendarPlus } from 'lucide-react';
 
 const customerNavItems: NavItem[] = [
     {
         title: 'Dashboard',
         href: '/dashboard',
         icon: LayoutGrid,
+    },
+    {
+        title: 'My Bookings',
+        href: '/bookings',
+        icon: Calendar,
+        isCheckFull: true,
+    },
+    {
+        title: 'Book Service',
+        href: '/bookings/create',
+        icon: CalendarPlus,
+        isCheckFull: true,
     },
 ];
 const adminNavItems: NavItem[] = [

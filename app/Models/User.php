@@ -46,6 +46,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+    
     public function isAdmin()
     {
         return $this->role === 'admin';

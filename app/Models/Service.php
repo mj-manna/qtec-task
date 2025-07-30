@@ -14,6 +14,11 @@ class Service extends Model
     ];
 
 
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+    
     public function scopeActive($query)
     {
         return $query->where('status', 'active');

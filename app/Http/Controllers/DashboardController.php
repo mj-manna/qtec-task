@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,15 +18,18 @@ class DashboardController extends Controller
 
         if ($user->isAdmin()) {
             return Inertia::render('admin/dashboard', [
-                'services' => Service::all(),
+                'bookings' => Booking::with(['user', 'service'])->latest()->get(),
                 'stats' => [
-                    'total_services' => Service::count()
+                    'total_services' => Service::count(),
+                    'total_bookings' => Booking::count(),
+                    'pending_bookings' => Booking::where('status', 'pending')->count(),
                 ]
             ]);
         }
 
         return Inertia::render('customer/dashboard', [
             'services' => Service::active()->get(),
+            'bookings' => $user->bookings()->with('service')->latest()->get(),
         ]);
     }
 }
