@@ -124,7 +124,7 @@ class BookingController extends Controller
         // Check for duplicate booking on same date for same user and service
         $existingBooking = Booking::where('user_id', $request->user()->id)
             ->where('service_id', $request->service_id)
-            ->where('booking_date', $request->booking_date)
+            ->whereDate('booking_date', $request->booking_date)
             ->first();
 
         if ($existingBooking) {
