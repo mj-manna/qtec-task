@@ -48,8 +48,13 @@ const footerNavItems: NavItem[] = [
         icon: Folder,
     },
     {
-        title: 'Api Documentation',
+        title: 'Postman Api Documentation',
         href: 'https://documenter.getpostman.com/view/26294663/2sB3B8tDZY',
+        icon: Rocket,
+    },
+    {
+        title: 'Swagger Api Documentation',
+        href: '/api/documentation#/',
         icon: Rocket,
     },
     {

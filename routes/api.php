@@ -9,6 +9,7 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('logout', [AuthController::class, 'logout']);
     Route::get('services', [ServiceController::class, 'index']);
     Route::post('bookings', [BookingController::class, 'store']);
     Route::get('bookings', [BookingController::class, 'index']);

@@ -12,6 +12,29 @@ class BookingController extends Controller
 {
     /**
      * Display a listing of the authenticated user's bookings
+     * 
+     * @OA\Get(
+     *     path="/bookings",
+     *     tags={"Bookings"},
+     *     summary="Get user's bookings",
+     *     description="Retrieve all bookings for the authenticated user",
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="User bookings retrieved successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="string", example="success"),
+     *             @OA\Property(property="data", type="array", @OA\Items(ref="#/components/schemas/Booking"))
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthenticated",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Unauthenticated.")
+     *         )
+     *     )
+     * )
      */
     public function index(Request $request)
     {
@@ -28,6 +51,51 @@ class BookingController extends Controller
 
     /**
      * Store a newly created booking
+     * 
+     * @OA\Post(
+     *     path="/bookings",
+     *     tags={"Bookings"},
+     *     summary="Create a new booking",
+     *     description="Create a new booking for a service",
+     *     security={{"bearerAuth":{}}},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"service_id","booking_date"},
+     *             @OA\Property(property="service_id", type="integer", example=1),
+     *             @OA\Property(property="booking_date", type="string", format="date", example="08/01/2025")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Booking created successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="string", example="success"),
+     *             @OA\Property(property="message", type="string", example="Booking created successfully"),
+     *             @OA\Property(property="data", ref="#/components/schemas/Booking")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Bad request - Service not available or duplicate booking",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="string", example="error"),
+     *             @OA\Property(property="message", type="string", example="Service is not available for booking")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Validation failed",
+     *         @OA\JsonContent(ref="#/components/schemas/ValidationErrorResponse")
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthenticated",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Unauthenticated.")
+     *         )
+     *     )
+     * )
      */
     public function store(Request $request)
     {
@@ -84,6 +152,36 @@ class BookingController extends Controller
 
     /**
      * Display a listing of all bookings (admin only)
+     * 
+     * @OA\Get(
+     *     path="/admin/bookings",
+     *     tags={"Bookings"},
+     *     summary="Get all bookings (admin only)",
+     *     description="Retrieve all bookings in the system (admin only)",
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="All bookings retrieved successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="string", example="success"),
+     *             @OA\Property(property="data", type="array", @OA\Items(ref="#/components/schemas/Booking"))
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthenticated",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Unauthenticated.")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=403,
+     *         description="Forbidden - Admin access required",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Forbidden.")
+     *         )
+     *     )
+     * )
      */
     public function adminIndex()
     {
