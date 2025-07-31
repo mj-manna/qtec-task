@@ -16,6 +16,14 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->user() || !$request->user()->isAdmin()) {
+            // Return JSON response for API routes
+            if ($request->expectsJson() || $request->is('api/*')) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Access denied. Admin privileges required.'
+                ], 403);
+            }
+            
             return redirect('/dashboard')->with('error', 'Access denied. Admin privileges required.');
         }
 

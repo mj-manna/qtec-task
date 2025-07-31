@@ -3,7 +3,6 @@
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -16,7 +15,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('bookings', BookingController::class)->only(['index', 'create', 'store']);
 
-    Route::middleware(AdminMiddleware::class)->group(function () {
+    Route::middleware('admin')->group(function () {
         Route::resource('services', ServiceController::class);
         Route::patch('/bookings/{booking}/status', [BookingController::class, 'updateStatus'])->name('bookings.updateStatus');
     });

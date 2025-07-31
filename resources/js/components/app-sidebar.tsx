@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { SharedData, type NavItem } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, Calendar, Folder, LayoutGrid } from 'lucide-react';
+import { BookOpen, Calendar, Folder, LayoutGrid, Rocket } from 'lucide-react';
 import AppLogo from './app-logo';
 import { isAdmin } from '@/lib/utils';
 import { CalendarPlus } from 'lucide-react';
@@ -46,6 +46,11 @@ const footerNavItems: NavItem[] = [
         title: 'Repository',
         href: 'https://github.com/mj-manna/qtech-task',
         icon: Folder,
+    },
+    {
+        title: 'Api Documentation',
+        href: 'https://documenter.getpostman.com/view/26294663/2sB3B8tDZY',
+        icon: Rocket,
     },
     {
         title: 'Documentation',

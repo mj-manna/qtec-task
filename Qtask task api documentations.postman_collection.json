@@ -1,0 +1,1325 @@
+{
+	"info": {
+		"_postman_id": "47ea1c49-5f3f-4d7e-ba58-7ff198dc1fd6",
+		"name": "Qtask task api documentations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33463814"
+	},
+	"item": [
+		{
+			"name": "Authontication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/login?email=admin@qtech.com&password=password",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "admin@qtech.com"
+								},
+								{
+									"key": "password",
+									"value": "password"
+								}
+							]
+						},
+						"description": "Login for admin and customer"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@qtech.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/login?email=admin@qtech.com&password=password",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"login"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "admin@qtech.com"
+										},
+										{
+											"key": "password",
+											"value": "password"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 06:56:46 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"Super admin\",\n            \"email\": \"admin@qtech.com\",\n            \"role\": \"admin\"\n        },\n        \"token\": \"3|Nu6FaPT6ONLndi8aaroDY7wXcHqcbv2vVexhFDhh01177705\"\n    }\n}"
+						},
+						{
+							"name": "Validation failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/login",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"login"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "admin@qtech.com",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:13:50 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation failed\",\n    \"errors\": {\n        \"email\": [\n            \"The email field is required.\"\n        ],\n        \"password\": [\n            \"The password field is required.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Customer registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/register?name=New Customer&email=customer@qtech.com&password=password&password_confirmation=password",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"register"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "New Customer"
+								},
+								{
+									"key": "email",
+									"value": "customer@qtech.com"
+								},
+								{
+									"key": "password",
+									"value": "password"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "password"
+								}
+							]
+						},
+						"description": "Registration for only customer"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/register?name=New Customer&email=customer@qtech.com&password=password&password_confirmation=password",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"register"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "New Customer"
+										},
+										{
+											"key": "email",
+											"value": "customer@qtech.com"
+										},
+										{
+											"key": "password",
+											"value": "password"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "password"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:01:04 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"User registered successfully\",\n    \"data\": {\n        \"user\": {\n            \"id\": 3,\n            \"name\": \"New Customer\",\n            \"email\": \"customer@qtech.com\",\n            \"role\": \"customer\"\n        },\n        \"token\": \"4|tunexj42zX0W1l7MGBFil0xyGYiyVX6PaoQZDQa0ff0ca966\"\n    }\n}"
+						},
+						{
+							"name": "Validation failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/register",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"register"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "New Customer",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "customer@qtech.com",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"disabled": true
+										},
+										{
+											"key": "password_confirmation",
+											"value": "password",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:03:04 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation failed\",\n    \"errors\": {\n        \"name\": [\n            \"The name field is required.\"\n        ],\n        \"email\": [\n            \"The email field is required.\"\n        ],\n        \"password\": [\n            \"The password field is required.\"\n        ]\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Admin and customer can login but only customer can registration"
+		},
+		{
+			"name": "Authenticated (Customer)",
+			"item": [
+				{
+					"name": "List available services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/services",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"services"
+							]
+						},
+						"description": "Show all avilable services for customer"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/services",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"services"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:06:41 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Mobile App Development\",\n            \"description\": \"Native and cross-platform mobile app development for iOS and Android.\",\n            \"price\": 2500,\n            \"status\": \"active\",\n            \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n            \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Digital Marketing\",\n            \"description\": \"Complete digital marketing solutions including SEO, social media, and PPC campaigns.\",\n            \"price\": 800,\n            \"status\": \"active\",\n            \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n            \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"UI/UX Design\",\n            \"description\": \"Modern and user-friendly UI/UX design services for web and mobile applications.\",\n            \"price\": 1200,\n            \"status\": \"active\",\n            \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n            \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Book a service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/bookings",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"bookings"
+							],
+							"query": [
+								{
+									"key": "service_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "booking_date",
+									"value": "07/01/2025",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Customer can book a service"
+					},
+					"response": [
+						{
+							"name": "Book a service",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/bookings?service_id=2&booking_date=08/01/2025",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"bookings"
+									],
+									"query": [
+										{
+											"key": "service_id",
+											"value": "2"
+										},
+										{
+											"key": "booking_date",
+											"value": "08/01/2025"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:07:23 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Booking created successfully\",\n    \"data\": {\n        \"user_id\": 1,\n        \"service_id\": \"2\",\n        \"booking_date\": \"2025-08-01T00:00:00.000000Z\",\n        \"status\": \"pending\",\n        \"updated_at\": \"2025-07-31T07:07:23.000000Z\",\n        \"created_at\": \"2025-07-31T07:07:23.000000Z\",\n        \"id\": 4,\n        \"service\": {\n            \"id\": 2,\n            \"name\": \"Mobile App Development\",\n            \"description\": \"Native and cross-platform mobile app development for iOS and Android.\",\n            \"price\": 2500,\n            \"status\": \"active\",\n            \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n            \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n        },\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"Super admin\",\n            \"email\": \"admin@qtech.com\",\n            \"email_verified_at\": \"2025-07-30T15:09:01.000000Z\",\n            \"role\": \"admin\",\n            \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n            \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n        }\n    }\n}"
+						},
+						{
+							"name": "Past date error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/bookings?service_id=2&booking_date=07/01/2025",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"bookings"
+									],
+									"query": [
+										{
+											"key": "service_id",
+											"value": "2"
+										},
+										{
+											"key": "booking_date",
+											"value": "07/01/2025"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:08:02 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation failed\",\n    \"errors\": {\n        \"booking_date\": [\n            \"The booking date field must be a date after today.\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "Validation failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/bookings",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"bookings"
+									],
+									"query": [
+										{
+											"key": "service_id",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "booking_date",
+											"value": "07/01/2025",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:08:42 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation failed\",\n    \"errors\": {\n        \"service_id\": [\n            \"The service id field is required.\"\n        ],\n        \"booking_date\": [\n            \"The booking date field is required.\"\n        ]\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Customer api section",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "1|xoxdw3VqPJ83HQLbxZH96R9fUnXnCEnkhOHkhkNEd371826d",
+						"type": "string"
+					}
+				]
+			}
+		},
+		{
+			"name": "Authenticated (Admin)",
+			"item": [
+				{
+					"name": "Create a new service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/services?name=Web Development&description=Web development description&price=500",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"services"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Web Development"
+								},
+								{
+									"key": "description",
+									"value": "Web development description"
+								},
+								{
+									"key": "price",
+									"value": "500"
+								}
+							]
+						},
+						"description": "Only admin can create a new service"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/services?name=Web Development&description=Web development description&price=500",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"services"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Web Development"
+										},
+										{
+											"key": "description",
+											"value": "Web development description"
+										},
+										{
+											"key": "price",
+											"value": "500"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:10:18 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Service created successfully\",\n    \"data\": {\n        \"name\": \"Web Development\",\n        \"description\": \"Web development description\",\n        \"price\": \"500\",\n        \"status\": \"active\",\n        \"updated_at\": \"2025-07-31T07:10:18.000000Z\",\n        \"created_at\": \"2025-07-31T07:10:18.000000Z\",\n        \"id\": 9\n    }\n}"
+						},
+						{
+							"name": "Validation failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/services",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"services"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Web Development",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "Web development description",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "500",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:10:42 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation failed\",\n    \"errors\": {\n        \"name\": [\n            \"The name field is required.\"\n        ],\n        \"description\": [\n            \"The description field is required.\"\n        ],\n        \"price\": [\n            \"The price field is required.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update service",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/services/9?name=Update service title",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"services",
+								"9"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Update service title"
+								},
+								{
+									"key": "description",
+									"value": "Update description",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "500",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Only admin can update a service"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/services/9?name=Update service title",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"services",
+										"9"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Update service title"
+										},
+										{
+											"key": "description",
+											"value": "Update description",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "500",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:11:37 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Service updated successfully\",\n    \"data\": {\n        \"id\": 9,\n        \"name\": \"Update service title\",\n        \"description\": \"Web development description\",\n        \"price\": 500,\n        \"status\": \"active\",\n        \"created_at\": \"2025-07-31T07:10:18.000000Z\",\n        \"updated_at\": \"2025-07-31T07:11:37.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Validation failed",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/services/9?price=ABCD",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"services",
+										"9"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Update service title",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "Update description",
+											"disabled": true
+										},
+										{
+											"key": "price",
+											"value": "ABCD"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:12:12 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Validation failed\",\n    \"errors\": {\n        \"price\": [\n            \"The price field must be a number.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete service",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/services/9",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"services",
+								"9"
+							]
+						},
+						"description": "Only admin can delete a service"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/services/9",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"services",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:12:53 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Service deleted successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List all bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/admin/bookings",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"bookings"
+							]
+						},
+						"description": "Show all booking, only can admin"
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/api/admin/bookings",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"bookings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "close",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.4.1",
+									"type": "text"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Jul 2025 07:09:25 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_id\": 2,\n            \"service_id\": 2,\n            \"booking_date\": \"2025-08-09T00:00:00.000000Z\",\n            \"status\": \"cancelled\",\n            \"created_at\": \"2025-07-30T18:20:00.000000Z\",\n            \"updated_at\": \"2025-07-30T18:41:05.000000Z\",\n            \"service\": {\n                \"id\": 2,\n                \"name\": \"Mobile App Development\",\n                \"description\": \"Native and cross-platform mobile app development for iOS and Android.\",\n                \"price\": 2500,\n                \"status\": \"active\",\n                \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n                \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n            },\n            \"user\": {\n                \"id\": 2,\n                \"name\": \"Manna\",\n                \"email\": \"manna@qtech.com\",\n                \"email_verified_at\": \"2025-07-30T15:09:01.000000Z\",\n                \"role\": \"customer\",\n                \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n                \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"user_id\": 2,\n            \"service_id\": 3,\n            \"booking_date\": \"2025-08-09T00:00:00.000000Z\",\n            \"status\": \"confirmed\",\n            \"created_at\": \"2025-07-30T18:20:29.000000Z\",\n            \"updated_at\": \"2025-07-30T18:38:46.000000Z\",\n            \"service\": {\n                \"id\": 3,\n                \"name\": \"Digital Marketing\",\n                \"description\": \"Complete digital marketing solutions including SEO, social media, and PPC campaigns.\",\n                \"price\": 800,\n                \"status\": \"active\",\n                \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n                \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n            },\n            \"user\": {\n                \"id\": 2,\n                \"name\": \"Manna\",\n                \"email\": \"manna@qtech.com\",\n                \"email_verified_at\": \"2025-07-30T15:09:01.000000Z\",\n                \"role\": \"customer\",\n                \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n                \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"user_id\": 1,\n            \"service_id\": 2,\n            \"booking_date\": \"2025-08-01T00:00:00.000000Z\",\n            \"status\": \"pending\",\n            \"created_at\": \"2025-07-31T06:42:54.000000Z\",\n            \"updated_at\": \"2025-07-31T06:42:54.000000Z\",\n            \"service\": {\n                \"id\": 2,\n                \"name\": \"Mobile App Development\",\n                \"description\": \"Native and cross-platform mobile app development for iOS and Android.\",\n                \"price\": 2500,\n                \"status\": \"active\",\n                \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n                \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n            },\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"Super admin\",\n                \"email\": \"admin@qtech.com\",\n                \"email_verified_at\": \"2025-07-30T15:09:01.000000Z\",\n                \"role\": \"admin\",\n                \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n                \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n            }\n        },\n        {\n            \"id\": 4,\n            \"user_id\": 1,\n            \"service_id\": 2,\n            \"booking_date\": \"2025-08-01T00:00:00.000000Z\",\n            \"status\": \"pending\",\n            \"created_at\": \"2025-07-31T07:07:23.000000Z\",\n            \"updated_at\": \"2025-07-31T07:07:23.000000Z\",\n            \"service\": {\n                \"id\": 2,\n                \"name\": \"Mobile App Development\",\n                \"description\": \"Native and cross-platform mobile app development for iOS and Android.\",\n                \"price\": 2500,\n                \"status\": \"active\",\n                \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n                \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n            },\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"Super admin\",\n                \"email\": \"admin@qtech.com\",\n                \"email_verified_at\": \"2025-07-30T15:09:01.000000Z\",\n                \"role\": \"admin\",\n                \"created_at\": \"2025-07-30T15:09:01.000000Z\",\n                \"updated_at\": \"2025-07-30T15:09:01.000000Z\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"description": "Admin section, only for admin",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "1|xoxdw3VqPJ83HQLbxZH96R9fUnXnCEnkhOHkhkNEd371826d",
+						"type": "string"
+					}
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_ENDPOINT",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}
